@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viação Vapt - Vupt</title>
+    <link rel="stylesheet" th:href="@{/css/viagensDisponiveis.css}">
+</head>
+<body>
+<header>
+    <img th:src="@{/image/logoMenorAdm.png}" alt="LogoVVV">
+    <h1>Viação Vapt - Vupt</h1>
+</header>
+<br><br>
+<h2>SEU CAMINHO É IMPORTANTE !!</h2>
+<div class="container">
+    <div class="container" style="margin-bottom: 20px">
+        <h2>Viagens Disponíveis</h2>
+        <hr>
+        <div th:if="${mensagemErro}" class="alert">
+            <p th:text="${mensagemErro}"></p>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Origem</th>
+                <th>Destino</th>
+                <th>Ação</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="v : ${listaViagens}">
+                <td th:text="${v.dataViagem}"></td>
+                <td th:text="${v.horarioSaida}"></td>
+                <td th:text="${v.origem}"></td>
+                <td th:text="${v.destino}"></td>
+                <td>
+                    <a href="javascript:void(0);" class="button button-edit" onclick="showInputPlaceholder(this)">
+                        Selecionar Poltrona
+                    </a>
+                    <div class="input-placeholder" style="display: none;">
+                        <form th:action="@{/usuarios/areaPagamento(idViagem=${v.id})}" method="GET" class="form">
+                            <input type="hidden" name="idViagem" th:value="${v.id}">
+                            <input type="number" name="nPoltrona" placeholder="Digite o número da poltrona" class="seat-input" max="40" min="1" required>
+                            <button type="submit" class="btn-confirm">Confirmar</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+    </div>
+    <button onclick="window.history.back();" class="btn-primary">Voltar para a página inicial</button>
+</div>
+
+<script>
+    function showInputPlaceholder(element) {
+        const inputPlaceholder = element.nextElementSibling;
+        inputPlaceholder.style.display = 'flex'; // Usando flex para alinhar os elementos em linha
+    }
+
+    // Função para ocultar a mensagem de erro após 5 segundos
+    function hideErrorMessage() {
+        const errorMessage = document.querySelector('.alert');
+        if (errorMessage) {
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 10000); // 10000 milissegundos = 10 segundos
+        }
+    }
+
+    // Chama a função para ocultar a mensagem de erro após o carregamento da página
+    document.addEventListener('DOMContentLoaded', hideErrorMessage);
+</script>
+</body>
+</html>

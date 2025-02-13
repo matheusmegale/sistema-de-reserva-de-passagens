@@ -1,0 +1,308 @@
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #fff;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Garantir consistência com a fonte */
+    margin: 0;
+    padding: 0;
+    background-image: url('../image/planodefundo2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Cabeçalho */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+header img {
+    max-width: 150px;
+    height: auto;
+}
+
+header h1 {
+    margin-top: 150px; /* Corrigido o espaçamento superior */
+    color: #fff;
+    font-size: 2.0em;
+}
+
+/* Estilos para títulos */
+h1 {
+    padding-top: 50px;
+    margin-bottom: 120px;
+    font-size: 1.8em;
+    color: rgb(0, 0, 0);
+    padding: 0 0 35px 15px;
+}
+
+h2 {
+    font-size: 1.4em;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+h3 {
+    margin-top: -40px;
+    font-size: 1.4em;
+    color: #fff;
+}
+
+/* Estilos para parágrafos e links */
+p {
+    cursor: pointer;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Estilos para inputs e botões */
+input {
+    display: block;
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid silver;
+    outline: none;
+    font-weight: 600;
+    color: #1c1c1c;
+    padding-left: 3px;
+}
+
+button {
+    display: block;
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    background-color: slateblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkslateblue;
+}
+
+/* Estilos para mensagens e containers */
+.mensagem1 {
+    margin-top: 15px;
+    margin-bottom: -100px;
+}
+
+.mensagem2 {
+    margin-top: 0px;
+    margin-bottom: -50px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 80%;
+    max-width: 600px;
+    min-height: 150px;
+}
+
+.mensagem2 label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 50px;
+}
+
+.mensagem3 {
+    margin-top: 100px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+span {
+    color: #000;
+}
+
+label {
+    color: #000;
+}
+
+/* Estilos para modais */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos para o QR Code */
+#pixQrCode {
+    width: 128px;
+    height: 128px;
+    margin-top: 20px;
+    margin-left: 125px;
+}
+
+/* Estilos para o container */
+#container {
+    width: 320px;
+    height: 520px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 6px -1px #000000;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#container .banner {
+    margin-left: 100px;
+    width: 320px;
+    height: 520px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.box-login {
+    width: 320px;
+    height: 520px;
+    border-radius: 10px;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-login .box {
+    width: 80%;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #000;
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+}
+
+.box2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #555;
+    border-radius: 5px;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+}
+
+.box-icon {
+    width: 50px;
+    height: 50px;
+    fill: orange;
+}
+
+.box-title {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #fff;
+}
+
+/* Estilos para inputs de data e mensagens de erro */
+.date-input {
+    width: 150px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+
+/* Estilos para bubble */
+#bubble {
+    cursor: pointer;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 1px solid #483D8B;
+    background: slateblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

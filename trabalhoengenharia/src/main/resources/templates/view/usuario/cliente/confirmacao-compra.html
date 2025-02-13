@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Passagem | Viação Vapt-Vupt</title>
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/confirmacaoCompra.css}">
+    <link rel="stylesheet" th:href="@{/css/media.css}">
+</head>
+<body>
+<header>
+    <img th:src="@{/image/logoMenorAdm.png}" alt="LogoVVV">
+    <h1>Viação Vapt - Vupt</h1>
+</header>
+<h2 style="margin-top: 100px">SEU CAMINHO É IMPORTANTE !!</h2>
+<div id="container">
+    <div class="banner">
+        <div class="mensagem1">
+            <h1>Sua Passagem:</h1>
+        </div>
+        <div class="mensagem2">
+            <label>Nome Passageiro: </label>
+            <span th:text="${passagem.cliente.nome}"></span></br></br>
+            <label>Origem: </label>
+            <span th:text="${passagem.viagem.origem}"></span></br></br>
+            <label>Destino: </label>
+            <span th:text="${passagem.viagem.destino}"></span></br></br>
+            <label>Poltrona:</label>
+            <span th:text="${passagem.nPoltrona}"></span></br></br>
+            <label>Preço: R$</label>
+            <span th:text="${passagem.preco}"></span></br></br>
+        </div>
+        <div class="mensagem3">
+            <center>
+                <h4 style="color:#000">Escolha uma Forma de Pagamento: </h4>
+            </center>
+        </div>
+    </div>
+
+    <div class="box-login">
+        <h3>Formas de Pagamento:</h3>
+        <div class="box">
+            <div class="box2" id="creditCardBox">
+                <img th:src="@{/image/iconCartao.png}" alt="Icone cartão" class="box-icon">
+                <div class="box-title">Cartão de Crédito</div>
+            </div>
+            <div class="box2" id="pixBox">
+                <img th:src="@{/image/iconPIX.png}" alt="Icone Pix" class="box-icon">
+                <div class="box-title">PIX QR Code</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Cartão de Crédito -->
+<div id="creditCardModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span></br>
+        <form id="creditCardForm" th:action="@{/usuarios/compraConcluida}" method="get">
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="Digite o número do cartão:" required></br>
+            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/AAAA" required></br>
+            <input type="text" id="cvv" name="cvv" placeholder="Digite o CVV:" required></br>
+            <button type="submit">Confirmar Pagamento</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal PIX -->
+<div id="pixModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Confirme seu pagamento</h3>
+        <div id="pixQrCode"></div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+    // Função para gerar o preço aleatório
+    function gerarPrecoAleatorio() {
+        return (Math.random() * (250 - 50) + 50).toFixed(2);
+    }
+
+    // Exibe o preço aleatório ao carregar a página
+    document.addEventListener("DOMContentLoaded", function() {
+        var preco = gerarPrecoAleatorio();
+        document.getElementById('passagemPreco').textContent = preco;
+    });
+
+    // Função para abrir e fechar modais
+    function configurarModal(modalId, triggerId) {
+        var modal = document.getElementById(modalId);
+        var trigger = document.getElementById(triggerId);
+        var close = modal.getElementsByClassName("close")[0];
+
+        trigger.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        close.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
+
+    // Configuração dos modais
+    configurarModal("creditCardModal", "creditCardBox");
+    configurarModal("pixModal", "pixBox");
+
+    // Geração do QR Code
+    document.getElementById("pixBox").onclick = function() {
+        var modal = document.getElementById("pixModal");
+        modal.style.display = "block";
+        var qrCodeElement = document.getElementById('pixQrCode');
+        qrCodeElement.innerHTML = ''; // Limpa o QR Code anterior
+        new QRCode(qrCodeElement, {
+            text: "Compra Concluída", // Insira o código ou URL do Pix desejado aqui
+            width: 128,
+            height: 128
+        });
+        setTimeout(function() {
+            modal.style.display = "none";
+            window.location.href = "/usuarios/compraConcluida"; // Redireciona para o endpoint "/compraConcluida"
+        }, 5000);
+    }
+</script>
+</body>
+</html>

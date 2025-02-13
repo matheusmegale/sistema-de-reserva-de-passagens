@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Viação Vapt Vupt</title>
+    <link rel="stylesheet" th:href="@{/css/homeAdm.css}">
+</head>
+
+<body>
+<center>
+    <img th:src="@{/image/logoMenorAdm.png}" style="width:240px;height:240px" class="image">
+    <h1 class="custom">Viação Vapt Vupt - Administrativo</h1>
+</center>
+<div class="container">
+    <div class="content">
+        <h1>OPERACÕES GERENCIAIS</h1>
+        <div class="box-container">
+            <a th:href="@{/motoristas/lista}" class="box-link">
+                <div class="box">
+                    <img th:src="@{/image/iconMotoristaAdm.png}" alt="Icone Motorista" class="box-icon">
+                    <div class="box-title">Gerenciar Motorista</div>
+                </div>
+            </a>
+
+            <a th:href="@{/onibus/lista}" class="box-link">
+                <div class="box">
+                    <img th:src="@{/image/iconOnibusAdm.png}" alt="Icone Onibus" class="box-icon">
+                    <div class="box-title">Gerenciar Ônibus</div>
+                </div>
+            </a>
+
+            <a th:href="@{/viagens/lista}" class="box-link">
+                <div class="box">
+                    <img th:src="@{/image/iconViagemAdm.png}" alt="Icone Viagem" class="box-icon">
+                    <div class="box-title">Gerenciar Viagens</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

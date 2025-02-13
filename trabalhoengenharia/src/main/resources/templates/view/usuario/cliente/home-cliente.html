@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Viação Vapt Vupt - Cliente</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/homeCliente.css}">
+</head>
+<body>
+<header>
+    <img th:src="@{/image/logoMenorAdm.png}" alt="LogoVVV">
+    <h1>Viação Vapt - Vupt</h1>
+</header>
+<h2>SEU CAMINHO É IMPORTANTE !!</h2>
+<div class="container">
+    <h2>Buscar Viagem : </h2>
+    </br>
+        <form id="bus-form" action="#" th:action="@{/usuarios/verificarViagem}" th:object="${viagem}" method="GET">
+        <div class="form-group">
+            <label for="origin">Cidade de origem:</label>
+            <input type="text" th:field="${viagem.origem}" id="origin" name="origin" required>
+        </div>
+
+        <div class="form-group">
+            <label for="destination">Cidade de destino:</label>
+            <input type="text" th:field="${viagem.destino}" id="destination" name="destination" required>
+        </div>
+
+        <div class="form-group">
+            <label for="departure">Ida:</label>
+            <input type="date" th:field="${viagem.dataViagem}" id="departure" name="departure" required>
+        </div>
+
+        <button type="submit">Buscar</button>
+    </form>
+</div>
+</body>
+</html>

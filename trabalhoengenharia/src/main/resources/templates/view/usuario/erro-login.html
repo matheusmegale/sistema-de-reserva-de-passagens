@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Viação Vapt-Vupt</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" th:href="@{/css/erro-login.css}">
+    <link rel="stylesheet" th:href="@{/css/media.css}">
+</head>
+<body>
+<div id="container">
+    <div class="banner">
+        <img th:src="@{/image/login2.png}" alt="imgLogin" style="width:440px;height:440px;">
+
+        <div class="footer">
+            <h1 style="color: #000000;"> Bem-vindo(a) à Vapt Vupt! </h1>
+        </div>
+    </div>
+
+    <div class="box-login">
+        <center>
+            </br></br>
+            <h1 class="custom">OPS!</h1>
+        </center>
+        <img th:src="@{/image/erro.png}" alt="errologin" style="width:180px;height:120px;">
+        <h2>Usuário não encontrado :</h2>
+        </br>
+        </br>
+        <h3>Verifique senha e e-mail novamente!</h3>
+
+        <div class="box">
+            <h4>Caso não possua conta, cadastre-se em nosso site!!</h4>
+            <a th:href="@{/usuarios/formularioParaCadastro}" class="button">Criar uma conta</a>
+
+            <div class="social">
+                <a href="https://www.facebook.com/">
+                    <img th:src="@{/image/facebook.png}" alt="facebook">
+                </a>
+                <a href="https://gmail.com/">
+                    <img th:src="@{/image/google.png}" alt="google">
+                </a>
+                <a href="https://github.com/">
+                    <img th:src="@{/image/github.png}" alt="github">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<a th:href="@{/usuarios/login}">
+    <div id="bubble">
+        <img th:src="@{/image/user_erro.png}" alt="icone-usuário" title="fazer-login">
+    </div>
+</a>
+</body>
+</html>

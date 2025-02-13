@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Motoristas</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/operacoesAdm.css}">
+</head>
+<center>
+    <img th:src="@{/image/logoMenorAdm.png}" style="width:240px;height:240px" class="image">
+    <h1>Viação Vapt Vupt - Administrativo</h1>
+</center>
+<body>
+    <div class="container">
+
+        <h2>Ônibus</h2>
+        <hr>
+
+        <!-- Botao para cadastrar onibus -->
+        <a th:href="@{/onibus/formularioParaCadastro}" class="btn-primary">
+            Cadastrar onibus
+        </a>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Placa</th>
+                <th>Quantidade de Poltronas</th>
+                <th>Ação</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="o : ${onibus}">
+                    <td th:text="${o.id}" />
+                    <td th:text="${o.placa}" />
+                    <td th:text="${o.quantPoltronas}" />
+
+                    <td>
+                        <!-- Botao para atualizar -->
+                        <a th:href="@{/onibus/formularioParaAtualizar(idOnibus=${o.id})}"
+                           class="button button-edit">
+                            Atualizar
+                        </a>
+
+                        <!-- Botao para deletar -->
+                        <a th:href="@{/onibus/deletar(idOnibus=${o.id})}"
+                           class="button button-delete"
+                           onclick="if (!(confirm('Tem certeza que deseja deletar este onibus?'))) return false">
+                            Deletar
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </br>
+        <a th:href="@{/usuarios/paginaInicialAdm}" class="btn-primary">Voltar para a página inicial</a>
+    </div>
+
+</body>
+</html>

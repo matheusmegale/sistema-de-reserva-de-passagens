@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Relatório por Origem</title>
+</head>
+<body>
+<form action="#" th:action="@{/viagens/relatorioPorOrigem}" th:object="${viagem}" method="get">
+  <input type="text" th:field="${viagem.origem}" />
+  <button type="submit" class="btn btn-info col-2">Enviar</button>
+</form>
+
+
+</body>
+</html>

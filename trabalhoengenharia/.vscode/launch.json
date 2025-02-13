@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TrabalhoengenhariaApplication<trabalhoengenharia>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.viacaovv.trabalhoengenharia.TrabalhoengenhariaApplication",
+            "projectName": "trabalhoengenharia",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

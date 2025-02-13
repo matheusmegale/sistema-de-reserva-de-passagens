@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Viação Vapt Vupt - Cliente</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/homeCliente.css}">
+</head>
+<body>
+<header>
+    <img th:src="@{/image/logoMenorAdm.png}" alt="LogoVVV">
+    <h1>Viação Vapt - Vupt</h1>
+</header>
+<h2>SEU CAMINHO É IMPORTANTE !!</h2>
+<div class="container">
+    <h2>Compra Concluida com sucesso !!</h2>
+    <center>
+        <img th:src="@{/image/compra.png}">
+        <h3>Volte Sempre!!!</h3>
+        <a th:href="@{/usuarios/pdfPassagem}" class="button">
+            Gerar Passagem
+        </a>
+    </center>
+    </br>
+</div>
+</body>
+</html>

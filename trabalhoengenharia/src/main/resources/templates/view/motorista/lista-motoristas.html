@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Motoristas</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/operacoesAdm.css}">
+</head>
+<center>
+    <img th:src="@{/image/logoMenorAdm.png}" style="width:240px;height:240px" class="image">
+    <h1>Viação Vapt Vupt</h1>
+</center>
+<body>
+<div class="container">
+
+    <h2>Motoristas</h2>
+    <hr>
+
+    <!-- Botão para cadastrar motorista -->
+    <a th:href="@{/motoristas/formularioParaCadastro}" class="btn-primary">
+        Cadastrar motorista
+    </a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>N° Habilitação</th>
+            <th>Ação</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="m : ${motoristas}">
+            <td th:text="${m.id}"></td>
+            <td th:text="${m.nome}"></td>
+            <td th:text="${m.idade}"></td>
+            <td th:text="${m.nHabilitacao}"></td>
+            <td>
+                <!-- Botão para atualizar -->
+                <a th:href="@{/motoristas/formularioParaAtualizar(idMotorista=${m.id})}" class="button button-edit">
+                    Editar
+                </a>
+
+                <!-- Botão para deletar -->
+                <a th:href="@{/motoristas/deletar(idMotorista=${m.id})}" class="button button-delete"
+                   onclick="if (!(confirm('Tem certeza que deseja deletar este motorista?'))) return false">
+                    Deletar
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </br>
+    <a th:href="@{/usuarios/paginaInicialAdm}" class="btn-primary">Voltar para a página inicial</a>
+</div>
+
+</body>
+</html>

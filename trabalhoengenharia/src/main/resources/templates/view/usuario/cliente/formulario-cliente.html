@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | Viação Vapt-Vupt</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" th:href="@{/css/cadastro.css}">
+    <link rel="stylesheet" th:href="@{/css/media.css}">
+</head>
+<body>
+<div id="container">
+    <div class="banner">
+        <img th:src="@{/image/login2.png}" alt="imgLogin" style="width:440px;height:440px;">
+
+        <div class="footer">
+            <h1 style="color: #000000;"> Bem-vindo(a) à Vapt Vupt! </h1>
+        </div>
+    </div>
+
+    <div class="box-login">
+        <center>
+            <h1>Olá!</h1>
+        </center>
+        <h2>Seja Bem Vindo !!!</h2>
+        <h2>Faça o seu Cadastro agora</h2>
+        <div class="box">
+
+            <form action="#" th:action="@{/usuarios/cadastrar}" th:object="${cliente}" method="POST" class="form">
+
+                <input type="text" th:field="${cliente.nome}" placeholder="Nome" required />
+
+                <input type="text" th:field="${cliente.cpf}" placeholder="CPF" required/>
+
+                <input type="text" th:field="${cliente.email}" placeholder="E-mail" required />
+
+                <input type="password" th:field="${cliente.senha}" placeholder="Crie uma senha" required />
+
+                <button type="submit">Enviar</button>
+
+            </form>
+
+        </div>
+
+    </div>
+    <a th:href="@{/usuarios/login}">
+        <div id="bubble">
+            <img th:src="@{/image/user_erro.png}" alt="icone-usuário" title="fazer-login">
+        </div>
+    </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório por Data</title>
+</head>
+<body>
+<form action="#" th:action="@{/viagens/relatorioPorData}" th:object="${viagem}" method="get">
+    <input type="date" th:field="${viagem.dataViagem}" />
+    <button type="submit" class="btn btn-info col-2">Enviar</button>
+</form>
+
+
+</body>
+</html>

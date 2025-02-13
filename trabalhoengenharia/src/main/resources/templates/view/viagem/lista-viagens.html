@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Viagens</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/operacoesAdm.css}">
+</head>
+<body>
+<center>
+    <img th:src="@{/image/logoMenorAdm.png}" style="width:240px;height:240px" class="image">
+    <h1>Viação Vapt Vupt - Administrativo</h1>
+</center>
+<div class="container">
+
+    <h2>Viagens</h2>
+    <hr>
+
+    <!-- Botao para cadastrar viagem -->
+    <a th:href="@{/viagens/formularioParaCadastro}" class="btn-primary">
+        Cadastrar viagem
+    </a>
+    <a href="javascript:void(0);" class="btn-secondary" onclick="toggleInputForm('origem')">
+        Relatório Por Origem
+    </a>
+    <a href="javascript:void(0);" class="btn-secondary" onclick="toggleInputForm('data')">
+        Relatório Por Data
+    </a>
+
+    <!-- Formulario de entrada para origem -->
+    <div id="origemForm" style="display: none;">
+        <form th:action="@{/viagens/relatorioPorOrigem}" method="get">
+            <label for="origem">Digite a Origem:</label>
+            <input type="text" id="origem" name="origem" required>
+            <button type="submit" class="btn-primary">Gerar Relatório</button>
+        </form>
+    </div>
+
+    <!-- Formulario de entrada para data -->
+    <div id="dataForm" style="display: none;">
+        <form th:action="@{/viagens/relatorioPorData}" method="get">
+            <label for="data">Digite a Data:</label>
+            <input type="date" id="data" name="dataViagem" required>
+            <button type="submit" class="btn-primary">Gerar Relatório</button>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Origem</th>
+            <th>Destino</th>
+            <th>Id Motorista</th>
+            <th>Id Ônibus</th>
+            <th>Ação</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="v : ${viagens}">
+            <td th:text="${v.id}"></td>
+            <td th:text="${v.dataViagem}"></td>
+            <td th:text="${v.horarioSaida}"></td>
+            <td th:text="${v.origem}"></td>
+            <td th:text="${v.destino}"></td>
+            <td th:text="${v.motorista.id}"></td>
+            <td th:text="${v.onibus.id}"></td>
+            <td>
+                <!-- Botao para atualizar -->
+                <a th:href="@{/viagens/formularioParaAtualizar(idViagem=${v.id})}" class="button button-edit">
+                    Atualizar
+                </a>
+                <!-- Botao para deletar -->
+                <a th:href="@{/viagens/deletar(idViagem=${v.id})}" class="button button-delete"
+                   onclick="if (!(confirm('Tem certeza que deseja deletar esta viagem?'))) return false">
+                    Deletar
+                </a>
+                <a th:href="@{/viagens/relatorioGeral(idViagem=${v.id})}" class="button btn-secondary">
+                    Relatório Geral
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </br>
+    <a th:href="@{/usuarios/paginaInicialAdm}" class="btn-primary">Voltar para a página inicial</a>
+</div>
+
+<script>
+    function toggleInputForm(formType) {
+        const origemForm = document.getElementById('origemForm');
+        const dataForm = document.getElementById('dataForm');
+
+        if (formType === 'origem') {
+            origemForm.style.display = origemForm.style.display === 'none' ? 'block' : 'none';
+            dataForm.style.display = 'none';
+        } else if (formType === 'data') {
+            dataForm.style.display = dataForm.style.display === 'none' ? 'block' : 'none';
+            origemForm.style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>
